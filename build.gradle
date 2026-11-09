@@ -1,0 +1,36 @@
+plugins {
+	id "java"
+	id "build-tools"
+	id "net.swedz.deploy-inator" version "1.0.1"
+}
+
+logger.lifecycle("${project.findProperty("mod_name")} version ${version}")
+
+evaluationDependsOnChildren()
+
+dependencies {
+	implementation project(":common")
+	implementation project(":neoforge")
+	implementation project(":fabric")
+}
+
+tasks.named("jar") {
+	from "LICENSE"
+	subprojects { subproject ->
+		from subproject.sourceSets.main.output
+		from subproject.sourceSets.findByName("client")?.output ?: []
+	}
+}
+
+tasks.register("sourceJar", Jar) {
+	group = "build"
+	archiveClassifier.set("sources")
+	from "LICENSE"
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	subprojects { subproject ->
+		from subproject.sourceSets.main.java
+		from subproject.sourceSets.main.resources
+		from subproject.sourceSets.findByName("client")?.java ?: []
+		from subproject.sourceSets.findByName("client")?.resources ?: []
+	}
+}

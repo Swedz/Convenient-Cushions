@@ -1,0 +1,10 @@
+plugins {
+	id "build-tools"
+	id "net.neoforged.moddev"
+}
+
+neoForge {
+	neoFormVersion = neoform_version
+}
+
+apply from: "dependencies.gradle"

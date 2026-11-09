@@ -1,0 +1,98 @@
+plugins {
+	id "java-library"
+	id "idea"
+	id "maven-publish"
+	id "net.swedz.deploy-inator"
+}
+
+configurations {
+	localImplementation
+	runtimeClasspath.extendsFrom localImplementation
+	compileClasspath.extendsFrom localImplementation
+}
+
+version = (System.getenv("MOD_VERSION") ?: "0.0.0-local") + "-${project.findProperty('minecraft_version')}"
+group = project.findProperty("mod_group_id")
+base {
+	archivesName = project.findProperty("artifact_name")
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+def configureSourceSets() {
+	sourceSets {
+		main {
+			java.srcDir "src/main/java"
+			resources.srcDir "src/generated/resources"
+		}
+		client {
+			if(project.name != "common")
+			{
+				def commonClient = project(":common").sourceSets.client
+				compileClasspath += commonClient.compileClasspath.filter { !it.name.contains("asm-") }
+				runtimeClasspath += commonClient.runtimeClasspath.filter { !it.name.contains("asm-") }
+				compileClasspath += commonClient.output
+				runtimeClasspath += commonClient.output
+			}
+			compileClasspath += sourceSets.main.compileClasspath
+			runtimeClasspath += sourceSets.main.runtimeClasspath
+			compileClasspath += sourceSets.main.output
+			runtimeClasspath += sourceSets.main.output
+		}
+	}
+}
+if(project.name == "fabric")
+{
+	// Because Fabric Loom eagerly creates the client source set for us, we need to modify it after to avoid error
+	afterEvaluate {
+		configureSourceSets()
+	}
+}
+else
+{
+	configureSourceSets()
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = "UTF-8"
+}
+
+idea {
+	module {
+		downloadSources = true
+		downloadJavadoc = true
+	}
+}
+
+processResources {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	
+	exclude(".cache")
+	
+	rename "common.mixins.json", "${mod_id}.common.mixins.json"
+	rename "neoforge.mixins.json", "${mod_id}.neoforge.mixins.json"
+	rename "neoforge.accesstransformer.cfg", "${mod_id}.neoforge.accesstransformer.cfg"
+	rename "neoforge.interfaces.json", "${mod_id}.neoforge.interfaces.json"
+	rename "fabric.mixins.json", "${mod_id}.fabric.mixins.json"
+	rename "fabric.accesswidener.classtweaker", "${mod_id}.fabric.accesswidener.classtweaker"
+}
+
+tasks.withType(ProcessResources).configureEach {
+	var replaceProperties = [
+			minecraft_version      : minecraft_version,
+			neoforge_version       : neoforge_version,
+			fabric_version         : fabric_version,
+			mod_id                 : mod_id,
+			mod_name               : mod_name,
+			mod_version            : version,
+			mod_authors            : mod_authors,
+			mod_description        : mod_description,
+			mod_github             : mod_github,
+			tesseract_version_range: tesseract_version_range
+	]
+	inputs.properties replaceProperties
+	
+	filesMatching(["META-INF/neoforge.mods.toml", "fabric.mod.json"]) {
+		expand replaceProperties
+	}
+}

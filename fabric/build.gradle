@@ -1,0 +1,46 @@
+plugins {
+	id "build-tools"
+	id "net.fabricmc.fabric-loom" version "${loom_version}"
+}
+
+apply from: "dependencies.gradle"
+
+loom {
+	splitEnvironmentSourceSets()
+	
+	mods {
+		"${mod_id}" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+	
+	accessWidenerPath = file("src/main/resources/fabric.accesswidener.classtweaker")
+	
+	runs {
+		client {
+			client()
+			
+			runDirectory = file("runs/client")
+			
+			if(System.getenv("MC_USERNAME") && System.getenv("MC_UUID"))
+			{
+				programArguments.add("--username")
+				programArguments.add(System.getenv("MC_USERNAME"))
+				programArguments.add("--uuid")
+				programArguments.add(System.getenv("MC_UUID"))
+			}
+		}
+		
+		server {
+			server()
+			
+			runDirectory = file("runs/server")
+		}
+	}
+	
+	runs.configureEach {
+		systemProperties.put("mixin.debug.export", "true")
+		systemProperties.put("mixin.debug.verbose", "true")
+	}
+}
