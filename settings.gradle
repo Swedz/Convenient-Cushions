@@ -56,7 +56,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Minecraft-Mod-Template"
+rootProject.name = "Convenient-Cushions"
 
 includeBuild("build-tools")
 include("common")

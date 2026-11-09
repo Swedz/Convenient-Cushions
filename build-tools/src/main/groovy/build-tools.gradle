@@ -19,7 +19,8 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-def configureSourceSets() {
+def configureSourceSets()
+{
 	sourceSets {
 		main {
 			java.srcDir "src/main/java"
@@ -29,8 +30,12 @@ def configureSourceSets() {
 			if(project.name != "common")
 			{
 				def commonClient = project(":common").sourceSets.client
-				compileClasspath += commonClient.compileClasspath.filter { !it.name.contains("asm-") }
-				runtimeClasspath += commonClient.runtimeClasspath.filter { !it.name.contains("asm-") }
+				compileClasspath += commonClient.compileClasspath.filter {
+					!it.name.contains("asm-")
+				}
+				runtimeClasspath += commonClient.runtimeClasspath.filter {
+					!it.name.contains("asm-")
+				}
 				compileClasspath += commonClient.output
 				runtimeClasspath += commonClient.output
 			}
@@ -41,6 +46,7 @@ def configureSourceSets() {
 		}
 	}
 }
+
 if(project.name == "fabric")
 {
 	// Because Fabric Loom eagerly creates the client source set for us, we need to modify it after to avoid error
@@ -79,16 +85,15 @@ processResources {
 
 tasks.withType(ProcessResources).configureEach {
 	var replaceProperties = [
-			minecraft_version      : minecraft_version,
-			neoforge_version       : neoforge_version,
-			fabric_version         : fabric_version,
-			mod_id                 : mod_id,
-			mod_name               : mod_name,
-			mod_version            : version,
-			mod_authors            : mod_authors,
-			mod_description        : mod_description,
-			mod_github             : mod_github,
-			tesseract_version_range: tesseract_version_range
+			minecraft_version: minecraft_version,
+			neoforge_version : neoforge_version,
+			fabric_version   : fabric_version,
+			mod_id           : mod_id,
+			mod_name         : mod_name,
+			mod_version      : version,
+			mod_authors      : mod_authors,
+			mod_description  : mod_description,
+			mod_github       : mod_github
 	]
 	inputs.properties replaceProperties
 	

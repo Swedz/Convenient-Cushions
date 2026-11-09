@@ -15,18 +15,14 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "net.swedz.my_mod.fabric.MyModFabric"
+            "net.swedz.convenient_cushions.fabric.ConvenientCushionsFabric"
         ],
         "server": [],
-        "client": [
-            "net.swedz.my_mod.fabric.client.MyModFabricClient"
-        ]
+        "client": []
     },
     "mixins": [
-        "${mod_id}.common.mixins.json",
-        "${mod_id}.fabric.mixins.json"
+        "${mod_id}.common.mixins.json"
     ],
-    "accessWidener": "${mod_id}.fabric.accesswidener.classtweaker",
     "depends": {
         "fabricloader": ">=${fabric_version}",
         "minecraft": "~${minecraft_version}",

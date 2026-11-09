@@ -1,13 +1,3 @@
 dependencies {
 	implementation project(":common")
-	
-	// TODO wait for tesseract
-	//implementation "net.swedz:tesseract-api-neoforge:${tesseract_version}-${minecraft_version}"
-	
-	// TODO wait for EMI
-	/*if (project.runtime_include_emi.toBoolean()) {
-		localImplementation "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
-	} else {
-		compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
-	}*/
 }

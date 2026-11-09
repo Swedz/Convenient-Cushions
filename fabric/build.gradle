@@ -15,8 +15,6 @@ loom {
 		}
 	}
 	
-	accessWidenerPath = file("src/main/resources/fabric.accesswidener.classtweaker")
-	
 	runs {
 		client {
 			client()

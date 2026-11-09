@@ -1,3 +1,3 @@
-# NeoForge Mod Template
+# Convenient Cushions
 
-This is a mod template repository for NeoForge mods.
+Cushions are a tad clunky, shall we make them a bit more convenient?

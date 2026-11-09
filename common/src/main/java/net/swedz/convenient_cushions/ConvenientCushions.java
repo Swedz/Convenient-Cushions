@@ -1,13 +1,13 @@
-package net.swedz.my_mod;
+package net.swedz.convenient_cushions;
 
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class MyMod
+public final class ConvenientCushions
 {
-	public static final String ID   = "my_mod";
-	public static final String NAME = "My Mod";
+	public static final String ID   = "convenient_cushions";
+	public static final String NAME = "Convenient Cushions";
 	
 	public static Identifier id(String path)
 	{
@@ -18,6 +18,5 @@ public final class MyMod
 	
 	public static void init()
 	{
-		LOGGER.info("Hello world on both!");
 	}
 }

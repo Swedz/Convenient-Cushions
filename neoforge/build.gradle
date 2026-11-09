@@ -8,12 +8,6 @@ apply from: "dependencies.gradle"
 neoForge {
 	version = neoforge_version
 	
-	validateAccessTransformers = true
-	accessTransformers = [
-			"src/main/resources/neoforge.accesstransformer.cfg"
-	]
-	interfaceInjectionData.from "src/main/resources/neoforge.interfaces.json"
-	
 	mods {
 		"${mod_id}" {
 			sourceSet sourceSets.main

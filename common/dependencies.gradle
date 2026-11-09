@@ -1,2 +1,6 @@
 dependencies {
+	// Mixin and MixinExtras must be provided manually here only at compile time so we can use mixins in common
+	compileOnly "org.spongepowered:mixin:0.8.7"
+	compileOnly "org.ow2.asm:asm:9.11"
+	implementation "io.github.llamalad7:mixinextras-neoforge:0.5.5"
 }
