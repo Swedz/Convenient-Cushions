@@ -8,3 +8,7 @@ neoForge {
 }
 
 apply from: "dependencies.gradle"
+
+sourceSets.main.resources {
+	exclude "assets/convenient_cushions/readme/**"
+}
