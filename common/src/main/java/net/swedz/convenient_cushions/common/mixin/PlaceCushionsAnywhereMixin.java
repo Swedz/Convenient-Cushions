@@ -1,4 +1,4 @@
-package net.swedz.convenient_cushions.mixin;
+package net.swedz.convenient_cushions.common.mixin;
 
 import com.blackgear.vanillabackport.common.level.items.CushionItem;
 import com.llamalad7.mixinextras.expression.Definition;
