@@ -14,9 +14,7 @@
     "license": "MIT",
     "environment": "*",
     "entrypoints": {
-        "main": [
-            "net.swedz.convenient_cushions.fabric.ConvenientCushionsFabric"
-        ],
+        "main": [],
         "server": [],
         "client": []
     },
@@ -24,10 +22,9 @@
         "${mod_id}.common.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=${fabric_version}",
+        "fabricloader": "*",
         "minecraft": "~${minecraft_version}",
         "java": ">=25",
-        "fabric-api": "*",
         "vanillabackport": ">=${vanillabackport_version}"
     }
 }
