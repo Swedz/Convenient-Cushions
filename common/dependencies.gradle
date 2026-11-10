@@ -3,4 +3,7 @@ dependencies {
 	compileOnly "org.spongepowered:mixin:0.8.7"
 	compileOnly "org.ow2.asm:asm:9.11"
 	implementation "io.github.llamalad7:mixinextras-neoforge:0.5.5"
+	
+	compileOnly "curse.maven:platform-997634:9318519"
+	compileOnly "curse.maven:vanillabackport-417430:9318571"
 }

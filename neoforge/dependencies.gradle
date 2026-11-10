@@ -1,3 +1,6 @@
 dependencies {
 	implementation project(":common")
+	
+	implementation "curse.maven:platform-997634:9318519"
+	implementation "curse.maven:vanillabackport-417430:9318571"
 }

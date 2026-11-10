@@ -53,6 +53,14 @@ dependencyResolutionManagement {
                 includeGroup "dev.emi"
             }
         }
+        maven {
+            name = "CurseMaven"
+            url = "https://cursemaven.com"
+            content {
+                // Platform & Vanilla Backport
+                includeGroup "curse.maven"
+            }
+        }
     }
 }
 

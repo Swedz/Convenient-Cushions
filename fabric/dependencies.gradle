@@ -1,7 +1,22 @@
+repositories {
+	maven {
+		name = "CurseMaven"
+		url = "https://cursemaven.com"
+		content {
+			// Platform & Vanilla Backport
+			includeGroup "curse.maven"
+		}
+	}
+}
+
 dependencies {
 	implementation project(":common")
 	
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	implementation "net.fabricmc:fabric-loader:${project.fabric_version}"
-	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
+	
+	modImplementation "curse.maven:platform-997634:9318521"
+	modImplementation "curse.maven:vanillabackport-417430:9318577"
 }

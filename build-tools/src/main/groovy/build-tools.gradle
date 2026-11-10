@@ -80,20 +80,22 @@ processResources {
 	rename "neoforge.accesstransformer.cfg", "${mod_id}.neoforge.accesstransformer.cfg"
 	rename "neoforge.interfaces.json", "${mod_id}.neoforge.interfaces.json"
 	rename "fabric.mixins.json", "${mod_id}.fabric.mixins.json"
-	rename "fabric.accesswidener.classtweaker", "${mod_id}.fabric.accesswidener.classtweaker"
+	rename "fabric.accesswidener", "${mod_id}.fabric.accesswidener"
 }
 
 tasks.withType(ProcessResources).configureEach {
 	var replaceProperties = [
-			minecraft_version: minecraft_version,
-			neoforge_version : neoforge_version,
-			fabric_version   : fabric_version,
-			mod_id           : mod_id,
-			mod_name         : mod_name,
-			mod_version      : version,
-			mod_authors      : mod_authors,
-			mod_description  : mod_description,
-			mod_github       : mod_github
+			minecraft_version            : minecraft_version,
+			neoforge_version             : neoforge_version,
+			fabric_version               : fabric_version,
+			mod_id                       : mod_id,
+			mod_name                     : mod_name,
+			mod_version                  : version,
+			mod_authors                  : mod_authors,
+			mod_description              : mod_description,
+			mod_github                   : mod_github,
+			vanillabackport_version      : vanillabackport_version,
+			vanillabackport_version_range: vanillabackport_version_range
 	]
 	inputs.properties replaceProperties
 	

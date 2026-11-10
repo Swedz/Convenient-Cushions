@@ -58,7 +58,7 @@ neoForge {
 		}
 		
 		data {
-			clientData()
+			data()
 			
 			gameDirectory.set(project.getLayout().getProjectDirectory().dir("runs/data"))
 			
