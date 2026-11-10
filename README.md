@@ -15,7 +15,8 @@ Vanilla does provide a way to achieve similar behavior to this. However that is 
 to place cushions at _literally_ any Y level. Meaning your cushion can be placed ever so slightly off from pixel
 alignment. Convenient Cushions also solves this by only placing cushions at pixel aligned Y levels.
 
-![Placing cushions easier](common/src/main/resources/readme/placing.gif)
+<!-- Direct image link: ![Placing cushions easier](https://raw.githubusercontent.com/Swedz/Convenient-Cushions/refs/heads/26.3/common/src/main/resources/assets/convenient_cushions/readme/placing.gif) -->
+![Placing cushions easier](common/src/main/resources/assets/convenient_cushions/readme/placing.gif)
 
 ### Consistent Cushion Breaking
 
