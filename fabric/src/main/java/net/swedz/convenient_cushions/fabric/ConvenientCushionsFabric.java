@@ -1,7 +1,7 @@
 package net.swedz.convenient_cushions.fabric;
 
 import net.fabricmc.api.ModInitializer;
-import net.swedz.convenient_cushions.ConvenientCushions;
+import net.swedz.convenient_cushions.common.ConvenientCushions;
 
 public final class ConvenientCushionsFabric implements ModInitializer
 {

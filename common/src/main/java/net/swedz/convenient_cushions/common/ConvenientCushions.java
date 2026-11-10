@@ -1,4 +1,4 @@
-package net.swedz.convenient_cushions;
+package net.swedz.convenient_cushions.common;
 
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
