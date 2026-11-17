@@ -13,6 +13,7 @@ publishing {
 }
 
 deployInator {
+	gradleJavaVersion = JavaVersion.toVersion(project.deploy_java_version)
 	modName = project.mod_name
 	compatibleMinecraftVersions project.compatible_minecraft_versions
 	modLoaders "neoforge,fabric"

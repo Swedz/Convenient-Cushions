@@ -1,7 +1,7 @@
 plugins {
 	id "java"
 	id "build-tools"
-	id "net.swedz.deploy-inator" version "1.0.1"
+	id "net.swedz.deploy-inator" version "1.0.2"
 }
 
 logger.lifecycle("${project.findProperty("mod_name")} version ${version}")

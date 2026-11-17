@@ -16,7 +16,7 @@ base {
 	archivesName = project.findProperty("artifact_name")
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
 
 def configureSourceSets()
 {
