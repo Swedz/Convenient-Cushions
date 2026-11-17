@@ -2,7 +2,6 @@ plugins {
 	id "java-library"
 	id "idea"
 	id "maven-publish"
-	id "net.swedz.deploy-inator"
 }
 
 configurations {

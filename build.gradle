@@ -34,3 +34,5 @@ tasks.register("sourceJar", Jar) {
 		from subproject.sourceSets.findByName("client")?.resources ?: []
 	}
 }
+
+apply from: "deploy.gradle"
