@@ -2,6 +2,7 @@
     "required": true,
     "minVersion": "0.8",
     "package": "net.swedz.convenient_cushions.common.mixin",
+    "refmap": "convenient_cushions.refmap.json",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
         "ConsistentCushionPopMixin",

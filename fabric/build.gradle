@@ -8,6 +8,11 @@ apply from: "dependencies.gradle"
 loom {
 	splitEnvironmentSourceSets()
 	
+	mixin {
+		useLegacyMixinAp = true
+		defaultRefmapName.set("${mod_id}.refmap.json")
+	}
+	
 	mods {
 		"${mod_id}" {
 			sourceSet sourceSets.main
@@ -41,4 +46,10 @@ loom {
 		systemProperties.put("mixin.debug.export", "true")
 		systemProperties.put("mixin.debug.verbose", "true")
 	}
+}
+
+// This is a little odd, but it is required so it includes the refmap file in the completed build
+tasks.named("compileJava", JavaCompile) {
+	source(project(":common").sourceSets.main.allJava)
+	options.compilerArgs.add("-proc:only")
 }
