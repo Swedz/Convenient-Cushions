@@ -1,11 +1,8 @@
 package net.swedz.convenient_cushions.common.mixin;
 
 import com.blackgear.vanillabackport.common.level.items.CushionItem;
-import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Local;
-import net.minecraft.core.Direction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
@@ -14,12 +11,13 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(CushionItem.class)
 public class PlaceCushionsAnywhereMixin
 {
-	@Definition(id = "clickedFace", local = @Local(type = Direction.class, name = "clickedFace"))
-	@Definition(id = "UP", field = "Lnet/minecraft/core/Direction;UP:Lnet/minecraft/core/Direction;")
-	@Expression("clickedFace != UP")
+	@Expression("? != ?")
 	@ModifyExpressionValue(
 			method = "useOn",
-			at = @At("MIXINEXTRAS:EXPRESSION")
+			at = @At(
+					value = "MIXINEXTRAS:EXPRESSION",
+					ordinal = 0
+			)
 	)
 	private boolean allowAnyClickedFace(boolean original)
 	{
